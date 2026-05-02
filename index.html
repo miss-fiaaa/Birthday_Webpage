@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Keshav ❤️</title>
+
+<style>
+body {
+  margin:0;
+  overflow:hidden;
+  font-family:cursive;
+  text-align:center;
+  transition:1s;
+}
+
+/* SOFT LIGHT AURA */
+body::before {
+  content:"";
+  position:fixed;
+  width:200%;
+  height:200%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255,255,255,0.15), transparent),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.08), transparent);
+  animation:bgMove 30s infinite alternate ease-in-out;
+  z-index:-1;
+}
+@keyframes bgMove {
+  from {transform:translate(0,0);}
+  to {transform:translate(-80px,-80px);}
+}
+
+/* THEMES */
+.theme1 { background:linear-gradient(#87CEEB,#bfe9ff); color:white;}
+.theme2 { background:radial-gradient(#000010,#000); color:#8ab4ff;}
+.theme3 { background:linear-gradient(#ff9ecf,#ffc0cb); color:#ff1493;}
+.theme4 { background:linear-gradient(#0f2027,#203a43); color:#ffd700;}
+.letterTheme { background:linear-gradient(#f5e6cc,#e6d3a3); color:#5a3e1b;}
+
+/* TEXT */
+.glow {
+  text-shadow:0 0 8px currentColor,0 0 18px currentColor;
+}
+
+/* BUTTON */
+button {
+  padding:10px 15px;
+  border:none;
+  border-radius:20px;
+  margin:5px;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+}
+
+/* TABLE */
+table {
+  margin:auto;
+  border-collapse:collapse;
+  table-layout:fixed;
+  width:260px;
+}
+td { border:1px solid currentColor; padding:6px;}
+#y,#mo,#d,#h,#m,#s,#ms {
+  display:inline-block;
+  min-width:80px;
+  font-family:monospace;
+}
+
+/* BOOK */
+.book {
+  width:280px;
+  height:360px;
+  margin:20px auto;
+  perspective:1200px;
+  position:relative;
+}
+.page {
+  width:100%;
+  height:100%;
+  position:absolute;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(10px);
+  padding:15px;
+  border-radius:15px;
+  backface-visibility:hidden;
+  transform-origin:left;
+  transition:1.2s ease;
+}
+#p1 {z-index:2;}
+#p2 {transform:rotateY(180deg);}
+.flip #p1 {transform:rotateY(-180deg);}
+.flip #p2 {transform:rotateY(0);}
+
+/* ✨ ULTRA GLOW PARTICLES */
+.particle {
+  position:absolute;
+  border-radius:50%;
+  opacity:0.6;
+  animation:float 25s linear infinite, glowPulse 4s ease-in-out infinite;
+
+  /* MULTI-LAYER GLOW */
+  box-shadow:
+    0 0 6px currentColor,
+    0 0 12px currentColor,
+    0 0 25px currentColor,
+    0 0 40px currentColor;
+
+  filter: blur(1px);
+}
+
+@keyframes float {
+  from {transform:translateY(0);}
+  to {transform:translateY(-150vh);}
+}
+
+/* BREATHING GLOW */
+@keyframes glowPulse {
+  0%,100% {opacity:0.4;}
+  50% {opacity:0.9;}
+}
+
+/* DEPTH SIZES */
+.small { width:6px; height:6px; }
+.medium { width:10px; height:10px; }
+.large { width:16px; height:16px; }
+
+/* TWINKLE */
+.star {
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:0;
+  animation:twinkle 5s infinite;
+}
+@keyframes twinkle {
+  0%,100%{opacity:0;}
+  50%{opacity:1;}
+}
+
+/* HEART */
+.heart {
+  position:absolute;
+  animation:floatUp 2s forwards;
+}
+@keyframes floatUp {
+  to {transform:translateY(-120px); opacity:0;}
+}
+</style>
+</head>
+
+<body class="theme1">
+
+<h1 class="glow">Happy Birthday Keshav 🎂</h1>
+
+<button onclick="switchTheme()">Switch Theme</button>
+<button onclick="openLetter()">Open Letter 💌</button>
+<button onclick="playMusic()">Music 🎵</button>
+
+<h2 class="glow">Your Time ⏳</h2>
+<table>
+<tr><td>Years</td><td id="y"></td></tr>
+<tr><td>Months</td><td id="mo"></td></tr>
+<tr><td>Days</td><td id="d"></td></tr>
+<tr><td>Hours</td><td id="h"></td></tr>
+<tr><td>Minutes</td><td id="m"></td></tr>
+<tr><td>Seconds</td><td id="s"></td></tr>
+<tr><td>Milliseconds</td><td id="ms"></td></tr>
+</table>
+
+<div class="book" id="book">
+  <div class="page" id="p1">Tap gently 💌</div>
+  <div class="page" id="p2">
+Hello dear kittu ji 👉🏻👈🏻 Wishing you the most blessed blessings from someone who wanna make your birthday more special .A memory that can make you feel happy whenever you remind it even I am here or not.Thankyou so much for coming in my life and making me realise that relationships can be beautiful and calm when you are with the right person someone who understands you.... someone who knows how to handle situations.... someone who never make you feel like all things that goes wrong were your fault Ik I wasn't brave enough to take stad for us but still for me that was like a golden period .As you already know that I am not good in expressing my feelings that's why I am making this gift so you can feel how much this crybaby adore you....Ones again Happy Birthday 🎂   
+  </div>
+</div>
+
+<audio id="music">
+<source src= m_an_l_emre_daldal.mp3
+</audio>
+
+<h3 class="glow">— Someone 🤍</h3>
+
+<script>
+let themes=["theme1","theme2","theme3","theme4"];
+let t=0;
+
+let particles=[];
+
+function clearParticles(){
+  particles.forEach(p=>p.remove());
+  particles=[];
+}
+
+function createParticles(color){
+  clearParticles();
+
+  function make(type,count){
+    for(let i=0;i<count;i++){
+      let p=document.createElement("div");
+      p.className="particle "+type;
+      p.style.color=color;
+      p.style.background=color;
+      p.style.top=Math.random()*100+"vh";
+      p.style.left=Math.random()*100+"vw";
+      p.style.animationDuration=(Math.random()*10+20)+"s";
+      document.body.appendChild(p);
+      particles.push(p);
+    }
+  }
+
+  make("small",20);
+  make("medium",15);
+  make("large",10);
+}
+
+/* STARS */
+for(let i=0;i<30;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.top=Math.random()*100+"vh";
+  s.style.left=Math.random()*100+"vw";
+  document.body.appendChild(s);
+}
+
+/* THEMES */
+function switchTheme(){
+  document.body.className=themes[t];
+
+  if(themes[t]=="theme1") createParticles("#ffffff");
+  if(themes[t]=="theme2") createParticles("#8ab4ff");
+  if(themes[t]=="theme3") createParticles("#ff69b4");
+  if(themes[t]=="theme4") createParticles("#ffd700");
+
+  t=(t+1)%themes.length;
+}
+
+/* LETTER */
+function openLetter(){
+  document.body.className="letterTheme";
+  document.getElementById("book").classList.toggle("flip");
+  createParticles("#c49b63");
+}
+
+/* MUSIC */
+function playMusic(){
+  let m=document.getElementById("music");
+  m.play();
+  m.volume=0;
+  let fade=setInterval(()=>{
+    if(m.volume<1){m.volume+=0.03;}
+  },200);
+}
+
+/* AGE */
+function update(){
+  let b=new Date("2005-05-12");
+  let n=new Date();
+  let diff=n-b;
+
+  y.innerText=Math.floor(diff/31536000000);
+  mo.innerText=Math.floor(diff/2592000000);
+  d.innerText=Math.floor(diff/86400000);
+  h.innerText=Math.floor(diff/3600000);
+  m.innerText=Math.floor(diff/60000);
+  s.innerText=Math.floor(diff/1000);
+  ms.innerText=(diff%1000);
+}
+setInterval(update,100);
+
+/* HEART */
+document.addEventListener("click",e=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=e.clientX+"px";
+  h.style.top=e.clientY+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),2000);
+});
+
+/* INIT */
+createParticles("#ffffff");
+</script>
+
+</body>
+</html>
